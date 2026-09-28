@@ -79,17 +79,32 @@ function mostrarFeedback(tipo) {
         feedback.hidden = false;
     }
 
-    if (tipo === "sucesso") {
-        const toast = document.querySelector(".toast");
+            if (tipo === "sucesso") {
+            if (window.Swal) {
+                window.Swal.fire({
+                    toast: true,
+                    position: "top-end",
+                    icon: "success",
+                    title: "Cadastro enviado com sucesso!",
+                    text: "Obrigado por querer colaborar com o projeto.",
+                    showConfirmButton: false,
+                    timer: 4000,
+                    timerProgressBar: true
+                });
 
-        if (toast) {
-            toast.hidden = false;
+                return;
+            }
 
-            window.setTimeout(() => {
-                toast.hidden = true;
-            }, 4000);
+            const toast = document.querySelector(".toast");
+
+            if (toast) {
+                toast.hidden = false;
+
+                window.setTimeout(() => {
+                    toast.hidden = true;
+                }, 4000);
+            }
         }
-    }
 }
 
 function tratarDigitacao(evento) {
