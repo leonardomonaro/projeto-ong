@@ -1,3 +1,9 @@
+import {
+    validarCampo,
+    validarFormulario,
+    limparValidacao
+} from "./validacao.js";
+
 function aplicarMascaraCpf(valor) {
     return valor
         .replace(/\D/g, "")
@@ -31,9 +37,17 @@ function aplicarMascaraCep(valor) {
 }
 
 function ocultarFeedbacks() {
+    const area = document.querySelector(
+        ".demonstracao-feedback"
+    );
+
     const feedbacks = document.querySelectorAll(
         ".alerta, .toast"
     );
+
+    if (area) {
+        area.hidden = true;
+    }
 
     feedbacks.forEach((feedback) => {
         feedback.hidden = true;
@@ -42,6 +56,10 @@ function ocultarFeedbacks() {
 
 function mostrarFeedback(tipo) {
     ocultarFeedbacks();
+
+    const area = document.querySelector(
+        ".demonstracao-feedback"
+    );
 
     const seletores = {
         sucesso: ".alerta-sucesso",
@@ -52,6 +70,10 @@ function mostrarFeedback(tipo) {
     const feedback = document.querySelector(
         seletores[tipo]
     );
+
+    if (area) {
+        area.hidden = false;
+    }
 
     if (feedback) {
         feedback.hidden = false;
@@ -73,27 +95,30 @@ function mostrarFeedback(tipo) {
 function tratarDigitacao(evento) {
     const campo = evento.target;
 
-    if (!(campo instanceof HTMLInputElement)) {
+    const campoCompativel =
+        campo instanceof HTMLInputElement ||
+        campo instanceof HTMLSelectElement;
+
+    if (!campoCompativel) {
         return;
     }
 
-    const mascaras = {
-        cpf: aplicarMascaraCpf,
-        telefone: aplicarMascaraTelefone,
-        cep: aplicarMascaraCep
-    };
+    if (campo instanceof HTMLInputElement) {
+        const mascaras = {
+            cpf: aplicarMascaraCpf,
+            telefone: aplicarMascaraTelefone,
+            cep: aplicarMascaraCep
+        };
 
-    const aplicarMascara = mascaras[campo.id];
+        const aplicarMascara = mascaras[campo.id];
 
-    if (aplicarMascara) {
-        campo.value = aplicarMascara(campo.value);
+        if (aplicarMascara) {
+            campo.value = aplicarMascara(campo.value);
+        }
     }
 
     if (campo.matches("[required]")) {
-        campo.setAttribute(
-            "aria-invalid",
-            String(!campo.validity.valid)
-        );
+        validarCampo(campo);
     }
 }
 
@@ -106,7 +131,7 @@ function tratarEnvio(evento) {
 
     evento.preventDefault();
 
-    if (!formulario.checkValidity()) {
+    if (!validarFormulario(formulario)) {
         mostrarFeedback("erro");
         formulario.reportValidity();
         return;
@@ -123,14 +148,7 @@ function tratarLimpeza(evento) {
     }
 
     window.setTimeout(() => {
-        const campos = formulario.querySelectorAll(
-            "[aria-invalid]"
-        );
-
-        campos.forEach((campo) => {
-            campo.removeAttribute("aria-invalid");
-        });
-
+        limparValidacao(formulario);
         mostrarFeedback("aviso");
     }, 0);
 }
@@ -138,6 +156,11 @@ function tratarLimpeza(evento) {
 export function iniciarEventosInterface() {
     document.addEventListener(
         "input",
+        tratarDigitacao
+    );
+
+    document.addEventListener(
+        "change",
         tratarDigitacao
     );
 
