@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cadastro de voluntários do Projeto Novo Amanhã.">
+    <title>Cadastro | Projeto Novo Amanhã</title>
+</head>
+<body>
+    <header>
+        <h1>Cadastro de voluntários</h1>
+        <nav aria-label="Navegação principal">
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+
+    <label for="menu-toggle" class="menu-icon">
+        <span aria-hidden="true">☰</span>
+        <span class="texto-menu">Menu</span>
+    </label>
+
+    <ul class="menu-principal">
+        <li><a href="index.html">Início</a></li>
+
+        <li class="possui-submenu">
+            <a href="projetos.html">Projetos</a>
+
+            <ul class="submenu">
+                <li>
+                    <a href="projetos.html#educacao">Educação</a>
+                </li>
+                <li>
+                    <a href="projetos.html#alimentos">Doações</a>
+                </li>
+                <li>
+                    <a href="projetos.html#oficinas">Oficinas</a>
+                </li>
+            </ul>
+        </li>
+
+        <li><a href="cadastro.html">Seja voluntário</a></li>
+    </ul>
+</nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Faça parte da nossa equipe</h2>
+            <p>Preencha os campos obrigatórios indicados abaixo.</p>
+
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>Dados pessoais</legend>
+
+                    <p>
+                        <label for="nome">Nome completo:</label>
+                        <input type="text" id="nome" name="nome"
+                               minlength="3" autocomplete="name" required>
+                    </p>
+
+                    <p>
+                        <label for="cpf">CPF:</label>
+                        <input type="text" id="cpf" name="cpf"
+                               pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
+                               placeholder="000.000.000-00" maxlength="14"
+                               title="Digite no formato 000.000.000-00"
+                               required>
+                    </p>
+
+                    <p>
+                        <label for="nascimento">Data de nascimento:</label>
+                        <input type="date" id="nascimento"
+                               name="nascimento" required>
+                    </p>
+
+                    <p>
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email"
+                               autocomplete="email" required>
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Contato e endereço</legend>
+
+                    <p>
+                        <label for="telefone">Telefone:</label>
+                        <input type="tel" id="telefone" name="telefone"
+                               pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}"
+                               placeholder="(11) 99999-9999" maxlength="15"
+                               title="Digite no formato (11) 99999-9999"
+                               required>
+                    </p>
+
+                    <p>
+                        <label for="cep">CEP:</label>
+                        <input type="text" id="cep" name="cep"
+                               pattern="[0-9]{5}-[0-9]{3}"
+                               placeholder="00000-000" maxlength="9"
+                               title="Digite no formato 00000-000"
+                               required>
+                    </p>
+
+                    <p>
+                        <label for="endereco">Endereço:</label>
+                        <input type="text" id="endereco" name="endereco"
+                               autocomplete="street-address" required>
+                    </p>
+
+                    <p>
+                        <label for="cidade">Cidade:</label>
+                        <input type="text" id="cidade" name="cidade" required>
+                    </p>
+
+                    <p>
+                        <label for="estado">Estado:</label>
+                        <select id="estado" name="estado" required>
+                            <option value="">Selecione</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PR">Paraná</option>
+                        </select>
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Área de interesse</legend>
+
+                    <p>
+                        <input type="checkbox" id="educacao"
+                               name="interesse" value="educacao">
+                        <label for="educacao">Educação</label>
+                    </p>
+
+                    <p>
+                        <input type="checkbox" id="doacoes"
+                               name="interesse" value="doacoes">
+                        <label for="doacoes">Campanhas de doação</label>
+                    </p>
+
+                    <p>
+                        <input type="checkbox" id="oficinas"
+                               name="interesse" value="oficinas">
+                        <label for="oficinas">Oficinas comunitárias</label>
+                    </p>
+                </fieldset>
+
+                <button type="submit">Enviar cadastro</button>
+                <button type="reset">Limpar formulário</button>
+            </form>
+        </section>
+
+        <section class="demonstracao-feedback"
+         aria-labelledby="titulo-feedback">
+
+    <h2 id="titulo-feedback">Retornos do formulário</h2>
+
+    <div class="alerta alerta-sucesso" role="status">
+        <strong>Cadastro realizado!</strong>
+        Seus dados foram recebidos com sucesso.
+    </div>
+
+    <div class="alerta alerta-aviso" role="alert">
+        <strong>Atenção:</strong>
+        confira os dados antes de enviar o formulário.
+    </div>
+
+    <div class="alerta alerta-erro" role="alert">
+        <strong>Não foi possível enviar.</strong>
+        Corrija os campos destacados e tente novamente.
+    </div>
+
+</section>
+
+<aside class="toast" role="status" aria-live="polite">
+    <span aria-hidden="true">✓</span>
+
+    <div>
+        <strong>Dados salvos</strong>
+        <p>As informações do voluntário foram registradas.</p>
+    </div>
+</aside>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Projeto Novo Amanhã.</p>
+    </footer>
+</body>
+</html>
