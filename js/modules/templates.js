@@ -356,28 +356,55 @@ export const templates = {
         <section
             class="demonstracao-feedback"
             aria-labelledby="titulo-feedback"
+            hidden
         >
             <h2 id="titulo-feedback">
                 Retornos do formulário
             </h2>
 
-            <div class="alerta alerta-sucesso" role="status">
+            <div
+                class="alerta alerta-sucesso"
+                role="status"
+                hidden
+            >
                 <strong>Cadastro realizado!</strong>
-                Seus dados foram recebidos com sucesso.
+
+                <span>
+                    Seus dados foram recebidos com sucesso.
+                </span>
             </div>
 
-            <div class="alerta alerta-aviso" role="alert">
-                <strong>Atenção:</strong>
-                confira os dados antes de enviar o formulário.
+            <div
+                class="alerta alerta-aviso"
+                role="status"
+                hidden
+            >
+                <strong>Formulário limpo.</strong>
+
+                <span>
+                    Os dados preenchidos foram removidos.
+                </span>
             </div>
 
-            <div class="alerta alerta-erro" role="alert">
+            <div
+                class="alerta alerta-erro"
+                role="alert"
+                hidden
+            >
                 <strong>Não foi possível enviar.</strong>
-                Corrija os campos destacados e tente novamente.
+
+                <span>
+                    Corrija os campos destacados e tente novamente.
+                </span>
             </div>
         </section>
 
-        <aside class="toast" role="status" aria-live="polite">
+        <aside
+            class="toast"
+            role="status"
+            aria-live="polite"
+            hidden
+        >
             <span aria-hidden="true">✓</span>
 
             <div>
@@ -388,6 +415,7 @@ export const templates = {
                 </p>
             </div>
         </aside>
+
     `,
 
     naoEncontrada: () => `
