@@ -1,5 +1,10 @@
 import { templates } from "./templates.js";
 
+import {
+    registrarNavegacao,
+    obterUltimaRota
+} from "./armazenamento.js";
+
 const titulos = {
     inicio: "Projeto Novo Amanhã",
     projetos: "Projetos | Projeto Novo Amanhã",
@@ -86,6 +91,10 @@ export function renderizarRota() {
     fecharMenuMobile();
     acessarSecao(secao);
 
+    if (templates[rota]) {
+        registrarNavegacao(rota, secao);
+    }
+
     container.focus({
         preventScroll: Boolean(secao)
     });
@@ -120,6 +129,16 @@ export function iniciarNavegacao() {
         "hashchange",
         renderizarRota
     );
+
+    if (!window.location.hash) {
+        const ultimaRota = obterUltimaRota();
+
+        window.history.replaceState(
+            null,
+            "",
+            `#${ultimaRota}`
+        );
+    }
 
     renderizarRota();
 }
