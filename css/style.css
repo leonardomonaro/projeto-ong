@@ -577,3 +577,8 @@ footer p {
         transform: translateY(0);
     }
 }
+/* Garante que elementos controlados pelo JavaScript sejam ocultados */
+
+[hidden] {
+    display: none !important;
+}
