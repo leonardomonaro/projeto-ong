@@ -1,3 +1,58 @@
+const dadosProjetos = [
+    {
+        id: "educacao",
+        titulo: "Educação para o Futuro",
+        categoria: "Educação",
+        classeBadge: "badge-educacao",
+        descricao:
+            "Aulas de reforço escolar, leitura e informática para " +
+            "crianças e adolescentes da comunidade."
+    },
+    {
+        id: "alimentos",
+        titulo: "Alimento que Transforma",
+        categoria: "Doações",
+        classeBadge: "badge-doacao",
+        descricao:
+            "Arrecadação e distribuição de alimentos para famílias " +
+            "em situação de vulnerabilidade social."
+    },
+    {
+        id: "oficinas",
+        titulo: "Oficinas para a Comunidade",
+        categoria: "Oficinas",
+        classeBadge: "badge-oficina",
+        descricao:
+            "Oficinas culturais e profissionalizantes voltadas à " +
+            "criatividade, autonomia e geração de renda."
+    }
+];
+
+const itensParaDoacao = [
+    "Alimentos não perecíveis",
+    "Materiais escolares",
+    "Roupas em bom estado",
+    "Produtos de higiene pessoal"
+];
+
+function criarCardProjeto(projeto) {
+    return `
+        <article id="${projeto.id}">
+            <h3>${projeto.titulo}</h3>
+
+            <span class="badge ${projeto.classeBadge}">
+                ${projeto.categoria}
+            </span>
+
+            <p>${projeto.descricao}</p>
+        </article>
+    `;
+}
+
+function criarItemDoacao(item) {
+    return `<li>${item};</li>`;
+}
+
 export const templates = {
     inicio: () => `
         <section>
@@ -81,44 +136,8 @@ export const templates = {
                 >
             </picture>
 
-            <article id="educacao">
-                <h3>Educação para o Futuro</h3>
+            ${dadosProjetos.map(criarCardProjeto).join("")}
 
-                <span class="badge badge-educacao">
-                    Educação
-                </span>
-
-                <p>
-                    Aulas de reforço escolar, leitura e informática para
-                    crianças e adolescentes da comunidade.
-                </p>
-            </article>
-
-            <article id="alimentos">
-                <h3>Alimento que Transforma</h3>
-
-                <span class="badge badge-doacao">
-                    Doações
-                </span>
-
-                <p>
-                    Arrecadação e distribuição de alimentos para famílias
-                    em situação de vulnerabilidade social.
-                </p>
-            </article>
-
-            <article id="oficinas">
-                <h3>Oficinas para a Comunidade</h3>
-
-                <span class="badge badge-oficina">
-                    Oficinas
-                </span>
-
-                <p>
-                    Oficinas culturais e profissionalizantes voltadas à
-                    criatividade, autonomia e geração de renda.
-                </p>
-            </article>
         </section>
 
         <section>
@@ -127,10 +146,7 @@ export const templates = {
             <p>Você pode contribuir com os seguintes itens:</p>
 
             <ul>
-                <li>Alimentos não perecíveis;</li>
-                <li>Materiais escolares;</li>
-                <li>Roupas em bom estado;</li>
-                <li>Produtos de higiene pessoal.</li>
+                ${itensParaDoacao.map(criarItemDoacao).join("")}
             </ul>
 
             <p>
