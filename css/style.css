@@ -614,3 +614,25 @@ input.campo-valido:focus,
 select.campo-valido:focus {
     outline-color: var(--cor-sucesso);
 }
+
+@media (prefers-contrast: more) {
+    :root {
+        --cor-fundo: #ffffff;
+        --cor-texto: #0b1f33;
+        --cor-primaria: #004f78;
+        --cor-destaque: #7a3600;
+    }
+
+    a,
+    button,
+    input,
+    select,
+    textarea {
+        border: 2px solid currentColor;
+    }
+
+    :focus-visible {
+        outline: 3px solid #7a3600;
+        outline-offset: 3px;
+    }
+}
