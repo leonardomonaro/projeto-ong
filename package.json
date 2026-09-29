@@ -1,0 +1,26 @@
+{
+  "name": "projeto-ong",
+  "version": "1.0.0",
+  "description": "Aplicação web desenvolvida para uma ONG fictícia, com o objetivo de apresentar suas iniciativas, divulgar formas de contribuição e permitir o cadastro de novos voluntários.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonardomonaro/projeto-ong.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/leonardomonaro/projeto-ong/issues"
+  },
+  "homepage": "https://github.com/leonardomonaro/projeto-ong#readme",
+  "devDependencies": {
+    "vite": "^8.3.1"
+  }
+}
